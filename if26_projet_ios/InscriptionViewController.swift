@@ -51,8 +51,7 @@ class InscriptionViewController: UIViewController {
                 loginSuccess = true
             }
         }
-        
-        print("aaaa")
+      
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
