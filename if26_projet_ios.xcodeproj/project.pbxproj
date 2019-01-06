@@ -21,6 +21,7 @@
 		0DDE2C8521C94F1C00C70B7E /* Pokestop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE2C8421C94F1C00C70B7E /* Pokestop.swift */; };
 		0DDE2C8721C94F4A00C70B7E /* Dresseur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE2C8621C94F4A00C70B7E /* Dresseur.swift */; };
 		0DDE2C8921C94F6100C70B7E /* Localisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE2C8821C94F6100C70B7E /* Localisation.swift */; };
+		1F10904B21E26757007799BD /* PokestopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10904A21E26757007799BD /* PokestopViewController.swift */; };
 		1F95CFDE21DD67EC008F9CDE /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CFDD21DD67EC008F9CDE /* InscriptionViewController.swift */; };
 		1F95CFEA21DE2DE7008F9CDE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CFE921DE2DE7008F9CDE /* HomeViewController.swift */; };
 		1F95CFED21DE781D008F9CDE /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CFEC21DE781D008F9CDE /* SHA1.swift */; };
@@ -119,6 +120,7 @@
 		0DDE2C8421C94F1C00C70B7E /* Pokestop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokestop.swift; sourceTree = "<group>"; };
 		0DDE2C8621C94F4A00C70B7E /* Dresseur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dresseur.swift; sourceTree = "<group>"; };
 		0DDE2C8821C94F6100C70B7E /* Localisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localisation.swift; sourceTree = "<group>"; };
+		1F10904A21E26757007799BD /* PokestopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokestopViewController.swift; sourceTree = "<group>"; };
 		1F95CFDD21DD67EC008F9CDE /* InscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
 		1F95CFE921DE2DE7008F9CDE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1F95CFEC21DE781D008F9CDE /* SHA1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				0DDE2C0821B6CD6400C70B7E /* AppDelegate.swift */,
+				1F10904A21E26757007799BD /* PokestopViewController.swift */,
 				1F95CFE921DE2DE7008F9CDE /* HomeViewController.swift */,
 				0DDE2C1A21C2B8CF00C70B7E /* MapViewController.swift */,
 				0DDE2C0C21B6CD6400C70B7E /* Main.storyboard */,
@@ -334,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DDE2C7D21C94DD000C70B7E /* PokemonDAO.swift in Sources */,
+				1F10904B21E26757007799BD /* PokestopViewController.swift in Sources */,
 				0DDE2C8921C94F6100C70B7E /* Localisation.swift in Sources */,
 				0DDE2C8321C94EFA00C70B7E /* Pokemon.swift in Sources */,
 				0DDE2C1B21C2B8CF00C70B7E /* MapViewController.swift in Sources */,

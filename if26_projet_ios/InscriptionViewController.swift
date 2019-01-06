@@ -18,7 +18,7 @@ class InscriptionViewController: UIViewController {
     @IBOutlet weak var mdpInscriptionLabel: UILabel!
     @IBOutlet weak var identifiantInscriptionLabel: UILabel!
     
-  
+    var pseudo:String = ""
     var loginSuccess = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class InscriptionViewController: UIViewController {
         }
         else {
             let dresseurDAO:DresseurDAO = DresseurDAO()
-            let pseudo: String = identifiantInscriptionTextField.text!
+            self.pseudo = identifiantInscriptionTextField.text!
             
             if (dresseurDAO.getDresseurByPseudo(pseudo:pseudo) != nil) {
                 identifiantInscriptionLabel.attributedText = self.messageError(msg:"Identifiant :\nCe nom d'utilisateur n'est pas disponible",position:13,taille:42)
@@ -81,6 +81,7 @@ class InscriptionViewController: UIViewController {
         if segue.identifier == "inscrireSegue" {
             if let destinationVC = segue.destination as? HomeViewController {
                 destinationVC.identifiantLabel =  "Identifiant :\nInscription réussie ! Vous pouvez vous connecter."
+                destinationVC.pseudo = self.pseudo
             }
         }
     }

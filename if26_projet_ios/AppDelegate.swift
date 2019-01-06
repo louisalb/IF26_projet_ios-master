@@ -15,8 +15,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        // Assuming your storyboard is named "Main"
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // Add code here (e.g. if/else) to determine which view controller class (chooseViewControllerA or chooseViewControllerB) and storyboard ID (chooseStoryboardA or chooseStoryboardB) to send the user to
+        let defaults = UserDefaults.standard
+        let savedPseudo:String = defaults.object(forKey: "Session en cours") as? String ?? ""
+        if !(savedPseudo.isEmpty){
+            let initialViewController: MapViewController = mainStoryboard.instantiateViewController(withIdentifier: "Map View") as! MapViewController
+            initialViewController.pseudo = savedPseudo
+            self.window?.rootViewController = initialViewController
+            
+        }else{
+            let initialViewController: HomeViewController = mainStoryboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+            self.window?.rootViewController = initialViewController
+        }
+            
+            self.window?.makeKeyAndVisible()
+            
+            return true
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
