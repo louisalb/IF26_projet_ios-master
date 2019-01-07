@@ -9,14 +9,60 @@
 import UIKit
 
 class PokestopViewController: UIViewController {
-
+    var latitude:Double = Double()
+    var longitude:Double = Double()
+    var token = true
+    
+    @IBOutlet weak var nomPokestopLabel: UILabel!
+    @IBOutlet weak var supprimerPokestopButton: UIButton!
+    @IBOutlet weak var modifierPokestopButton: UIButton!
+    @IBOutlet weak var validerPokestopButton: UIButton!
+    @IBOutlet weak var nomPokestopTextField: UITextField!
+    @IBOutlet weak var latitudePokestopLabel: UILabel!
+    @IBOutlet weak var longitudePokestopLabel: UILabel!
+    @IBOutlet weak var switchPokestop: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.latitudePokestopLabel.text = String(self.latitude)
+        self.longitudePokestopLabel.text = String(self.longitude)
+        
+        if self.token  == true {
+            self.supprimerPokestopButton.isHidden = true
+            self.modifierPokestopButton.isHidden = true
+        }
+        else{
+            self.validerPokestopButton.isHidden = true
+        }
     }
     
-
+    @IBAction func valider(_ sender: UIButton) {
+        if nomPokestopTextField.text?.isEmpty ?? true {
+            nomPokestopLabel.attributedText = self.messageError(msg:"Identifiant :\nVous devez choisir un nom de pokestop",position:13,taille:38)
+        }
+        else{
+            let defaults = UserDefaults.standard
+            let savedPseudo:String = defaults.object(forKey: "Session en cours") as? String ?? ""
+            let dresseurDAO:DresseurDAO = DresseurDAO()
+            let dresseur: Dresseur = dresseurDAO.getDresseurByPseudo(pseudo: savedPseudo)!
+            let pokestopDAO:PokestopDAO = PokestopDAO()
+            let pokestop:Pokestop = Pokestop(is_gym: self.switchPokestop.isOn, latitude: self.latitude, longitude: self.longitude, dresseur: dresseur, nom: nomPokestopTextField.text!)
+            pokestopDAO.save(pokestop: pokestop)
+            self.performSegue(withIdentifier: "pokestopSegue", sender: nil)
+        }
+    }
+    @IBAction func modifier(_ sender: UIButton) {
+    }
+    @IBAction func supprimer(_ sender: UIButton) {
+    }
+    
+    func messageError(msg:String, position:Int, taille:Int) -> NSMutableAttributedString{
+        
+        var myMutableString = NSMutableAttributedString()
+        myMutableString = NSMutableAttributedString(string: msg, attributes: [NSAttributedString.Key.font:UIFont(name: "Helvetica Neue", size: 17.0)!])
+        myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: NSRange(location:position,length:taille))
+        return myMutableString
+    }
+    
     /*
     // MARK: - Navigation
 

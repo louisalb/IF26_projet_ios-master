@@ -213,7 +213,7 @@
                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kbq-ir-25B">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZG-rE-6V6">
                                         <rect key="frame" x="0.0" y="28.5" width="365" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -225,7 +225,7 @@
                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hV0-QI-kAZ">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JWx-hj-kr8">
                                         <rect key="frame" x="0.0" y="95" width="365" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -237,7 +237,7 @@
                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GRI-XS-8mn">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Tq-va-gCF">
                                         <rect key="frame" x="0.0" y="161.5" width="365" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -304,11 +304,11 @@
                     </view>
                     <connections>
                         <outlet property="confmdpInscriptionLabel" destination="rt9-5J-chS" id="6gx-bP-aeq"/>
-                        <outlet property="confmdpInscriptionTextField" destination="GRI-XS-8mn" id="Sr0-Ul-t2b"/>
+                        <outlet property="confmdpInscriptionTextField" destination="7Tq-va-gCF" id="R8u-7h-QSi"/>
                         <outlet property="identifiantInscriptionLabel" destination="GC1-Nl-Lxs" id="3cv-47-CgX"/>
-                        <outlet property="identifiantInscriptionTextField" destination="Kbq-ir-25B" id="w3e-qx-ttq"/>
+                        <outlet property="identifiantInscriptionTextField" destination="fZG-rE-6V6" id="88E-BG-dce"/>
                         <outlet property="mdpInscriptionLabel" destination="twZ-sC-ebe" id="r1K-pM-O6h"/>
-                        <outlet property="mdpInscriptionTextField" destination="hV0-QI-kAZ" id="Xgd-9s-dk9"/>
+                        <outlet property="mdpInscriptionTextField" destination="JWx-hj-kr8" id="VsS-uL-BZF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="65u-6G-grI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -324,9 +324,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView verifyAmbiguity="ignoreSizes" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fNf-Dj-6yB">
-                                <rect key="frame" x="5" y="243.5" width="365" height="180.5"/>
+                                <rect key="frame" x="5" y="224.5" width="365" height="218.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom du Pokestop :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Y3-JL-Uca">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom du Pokestop :" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Y3-JL-Uca">
                                         <rect key="frame" x="0.0" y="0.0" width="365" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -390,9 +390,30 @@
                                         <rect key="frame" x="0.0" y="150.5" width="365" height="30"/>
                                         <state key="normal" title="Valider"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="validerPokestopSegue" id="P8U-wm-Ju2"/>
+                                            <action selector="valider:" destination="ERE-ri-vxL" eventType="touchUpInside" id="nRR-2k-EVc"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-jq-Va5">
+                                        <rect key="frame" x="0.0" y="188.5" width="365" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooo-SH-KBx">
+                                                <rect key="frame" x="0.0" y="0.0" width="182.5" height="30"/>
+                                                <state key="normal" title="Modifier"/>
+                                                <connections>
+                                                    <action selector="Modifier:" destination="ERE-ri-vxL" eventType="touchUpInside" id="DZ7-rb-pmY"/>
+                                                    <action selector="modifier:" destination="ERE-ri-vxL" eventType="touchUpInside" id="IKU-1J-00P"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36D-j9-3W6">
+                                                <rect key="frame" x="182.5" y="0.0" width="182.5" height="30"/>
+                                                <state key="normal" title="Supprimer"/>
+                                                <connections>
+                                                    <action selector="Supprimer:" destination="ERE-ri-vxL" eventType="touchUpInside" id="BpN-tO-Gsu"/>
+                                                    <action selector="supprimer:" destination="ERE-ri-vxL" eventType="touchUpInside" id="IUm-Q4-YZP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ONF-cW-3gI">
@@ -441,6 +462,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Tfi-ke-CEP"/>
                     </view>
+                    <connections>
+                        <outlet property="latitudePokestopLabel" destination="sCV-jn-aL6" id="wO0-Ms-XXe"/>
+                        <outlet property="longitudePokestopLabel" destination="rrV-VA-0YY" id="Va3-29-QAB"/>
+                        <outlet property="modifierPokestopButton" destination="ooo-SH-KBx" id="A4d-ct-9Aa"/>
+                        <outlet property="nomPokestopLabel" destination="5Y3-JL-Uca" id="f8l-IO-z1N"/>
+                        <outlet property="nomPokestopTextField" destination="B3e-XD-w1k" id="LUY-jR-2T1"/>
+                        <outlet property="supprimerPokestopButton" destination="36D-j9-3W6" id="TWA-HC-PDB"/>
+                        <outlet property="switchPokestop" destination="XGU-Rc-s6I" id="ZZ7-Eg-fhn"/>
+                        <outlet property="validerPokestopButton" destination="FEF-Rx-UMV" id="gsx-pq-qmB"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="pokestopSegue" id="3hn-Yz-R3u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yy-a6-sOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -453,7 +485,7 @@
         <image name="on_off" width="218" height="218"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P8U-wm-Ju2"/>
+        <segue reference="3hn-Yz-R3u"/>
         <segue reference="DvX-DY-yuW"/>
     </inferredMetricsTieBreakers>
 </document>

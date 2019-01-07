@@ -11,7 +11,7 @@ import CoreLocation
 class HomeViewController: UIViewController {
     
     var identifiantLabel:String  = "Identifiant :"
-    var pseudo:String = ""
+    var pseudo:String = String()
     let defaults = UserDefaults.standard
     var loginSuccess:Bool = false
     @IBOutlet weak var identifiantConnexionLabel: UILabel!
@@ -60,13 +60,6 @@ class HomeViewController: UIViewController {
     }
 
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "connexionSegue" {
-            if let destinationVC = segue.destination as? MapViewController {
-                destinationVC.pseudo = self.pseudo
-                
-            }
-        }
-    }
+    
 }
 

@@ -14,8 +14,8 @@ import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
-    var pseudo:String = ""
     var logoutSuccess:Bool = false
+    let annotation = MKPointAnnotation()
     
     @IBOutlet weak var mMap: MKMapView!
     var locationManager = CLLocationManager()
@@ -25,8 +25,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var pseudoMapLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       pseudoMapLabel.text = pseudo
+        let defaults = UserDefaults.standard
+        let savedPseudo:String = defaults.object(forKey: "Session en cours") as? String ?? ""
+       pseudoMapLabel.text = savedPseudo
         // init data :
         if pokemonDAO.getAllPokemon().count == 0 {
             pokemonDAO.loadFirstGen()
@@ -57,46 +58,49 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(addPokestop(longGesture:)))
         mMap.addGestureRecognizer(longGesture)
+        
+        let pokestopDAO:PokestopDAO = PokestopDAO()
+        let pokestopsArray:Array<Pokestop> = pokestopDAO.getAllPokestop()
+        for pokestop in pokestopsArray {
+            let pin:MyPointAnnotation = MyPointAnnotation()
+            pin.title = pokestop.getNom()
+            pin.coordinate = CLLocationCoordinate2D(latitude: pokestop.getLatitude(), longitude: pokestop.getLongitude())
+            if pokestop.getIs_gym() == true {
+                pin.markerTintColor = .green
+            }
+            self.mMap.addAnnotation(pin)
+        }
     }
     @IBAction func quitter(_ sender: UIButton) {
-        self.createAlert()
+        self.createAlertQuitter()
     }
     
     @objc func addPokestop(longGesture: UIGestureRecognizer) {
         if longGesture.state == .began {
-            var touchPoint = longGesture.location(in: mMap)
-            var newCoordinates = mMap.convert(touchPoint, toCoordinateFrom: mMap)
-            let annotation = MKPointAnnotation()
+            let touchPoint = longGesture.location(in: mMap)
+            let newCoordinates = mMap.convert(touchPoint, toCoordinateFrom: mMap)
             annotation.coordinate = newCoordinates
-            
-            CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: newCoordinates.latitude, longitude: newCoordinates.longitude), completionHandler: {(placemarks, error) -> Void in
-                if error != nil {
-                    print("Reverse geocoder failed with error" + error!.localizedDescription)
-                    return
-                }
-                
-                if placemarks!.count > 0 {
-                    let pm = placemarks![0] as! CLPlacemark
-                    
-                    // not all places have thoroughfare & subThoroughfare so validate those values
-                    annotation.title = pm.thoroughfare! + ", " + pm.subThoroughfare!
-                    annotation.subtitle = pm.subLocality
-                    self.mMap.addAnnotation(annotation)
-                    print(pm)
-                }
-                else {
-                    annotation.title = "Unknown Place"
-                    self.mMap.addAnnotation(annotation)
-                    print("Problem with the data received from geocoder")
-                }
-                //.append(["name":annotation.title,"latitude":"\(newCoordinates.latitude)","longitude":"\(newCoordinates.longitude)"])
-            })
-            //self.performSegue(withIdentifier: "longTouchSegue", sender: nil)
+            self.createAlertPokestop()
         }
     }
     
+    func createAlertPokestop ()
+    {
+        let alert = UIAlertController(title: "Pokestop", message: "Voulez-vous ajouter un Pokestop ?", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "ANNULER", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "OUI", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "longTouchSegue", sender: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
-    func createAlert ()
+    func createAlertQuitter ()
     {
         let alert = UIAlertController(title: "Déconnexion", message: "Voulez-vous vous déconnecter ?", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "ANNULER", style: UIAlertAction.Style.default, handler: { (action) in
@@ -114,16 +118,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "longTouchSegue" {
+            if let destinationVC = segue.destination as? PokestopViewController {
+                destinationVC.latitude = self.annotation.coordinate.latitude
+                destinationVC.longitude = self.annotation.coordinate.longitude
+                destinationVC.token = true
+                
+            }
+        }
     }
-    */
-
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? MyPointAnnotation else { return nil }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "myAnnotation") as? MKMarkerAnnotationView
+        
+        if annotationView == nil {
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "myAnnotation")
+        } else {
+            annotationView?.annotation = annotation
+        }
+        annotationView?.markerTintColor = annotation.markerTintColor
+        return annotationView
+    }
 }

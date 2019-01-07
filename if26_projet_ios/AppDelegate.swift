@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let savedPseudo:String = defaults.object(forKey: "Session en cours") as? String ?? ""
         if !(savedPseudo.isEmpty){
             let initialViewController: MapViewController = mainStoryboard.instantiateViewController(withIdentifier: "Map View") as! MapViewController
-            initialViewController.pseudo = savedPseudo
+            
             self.window?.rootViewController = initialViewController
             
         }else{

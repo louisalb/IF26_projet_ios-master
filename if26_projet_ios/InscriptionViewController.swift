@@ -11,6 +11,8 @@ import UIKit
 class InscriptionViewController: UIViewController {
 
    
+   
+    
     @IBOutlet weak var confmdpInscriptionTextField: UITextField!
     @IBOutlet weak var mdpInscriptionTextField: UITextField!
     @IBOutlet weak var identifiantInscriptionTextField: UITextField!
@@ -29,7 +31,7 @@ class InscriptionViewController: UIViewController {
         
         if identifiantInscriptionTextField.text?.isEmpty ?? true {
             identifiantInscriptionLabel.attributedText = self.messageError(msg:"Identifiant :\nVous devez choisir un identifiant",position:13,taille:34)
-            super.viewDidLoad()
+            
             
         }
         else {
