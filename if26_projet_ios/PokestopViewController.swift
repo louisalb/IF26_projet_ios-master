@@ -36,7 +36,7 @@ class PokestopViewController: UIViewController {
         }
         else{
             self.latitudePokestopLabel.text = String(self.pokestop!.getLatitude())
-            self.longitudePokestopLabel.text = String(self.pokestop!.getLatitude())
+            self.longitudePokestopLabel.text = String(self.pokestop!.getLongitude())
             self.nomPokestopTextField.text = self.pokestop!.getNom()
             self.validerPokestopButton.isHidden = true
             if self.pokestop?.getIs_gym() == true {
