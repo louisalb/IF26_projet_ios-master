@@ -21,8 +21,11 @@
 		0DDE2C8521C94F1C00C70B7E /* Pokestop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE2C8421C94F1C00C70B7E /* Pokestop.swift */; };
 		0DDE2C8721C94F4A00C70B7E /* Dresseur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE2C8621C94F4A00C70B7E /* Dresseur.swift */; };
 		0DDE2C8921C94F6100C70B7E /* Localisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE2C8821C94F6100C70B7E /* Localisation.swift */; };
+		1F0C189221ECA1FD00C8F6AD /* UIButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C189121ECA1FD00C8F6AD /* UIButtonCustom.swift */; };
 		1F10904B21E26757007799BD /* PokestopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10904A21E26757007799BD /* PokestopViewController.swift */; };
 		1F10905321E3E9A5007799BD /* MyPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10905221E3E9A5007799BD /* MyPointAnnotation.swift */; };
+		1F10905521E3FD0F007799BD /* PokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10905421E3FD0F007799BD /* PokemonViewController.swift */; };
+		1F10905B21EAB9FC007799BD /* PokemonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10905A21EAB9FC007799BD /* PokemonsTableViewController.swift */; };
 		1F95CFDE21DD67EC008F9CDE /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CFDD21DD67EC008F9CDE /* InscriptionViewController.swift */; };
 		1F95CFEA21DE2DE7008F9CDE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CFE921DE2DE7008F9CDE /* HomeViewController.swift */; };
 		1F95CFED21DE781D008F9CDE /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CFEC21DE781D008F9CDE /* SHA1.swift */; };
@@ -121,8 +124,11 @@
 		0DDE2C8421C94F1C00C70B7E /* Pokestop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokestop.swift; sourceTree = "<group>"; };
 		0DDE2C8621C94F4A00C70B7E /* Dresseur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dresseur.swift; sourceTree = "<group>"; };
 		0DDE2C8821C94F6100C70B7E /* Localisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localisation.swift; sourceTree = "<group>"; };
+		1F0C189121ECA1FD00C8F6AD /* UIButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonCustom.swift; sourceTree = "<group>"; };
 		1F10904A21E26757007799BD /* PokestopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokestopViewController.swift; sourceTree = "<group>"; };
 		1F10905221E3E9A5007799BD /* MyPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPointAnnotation.swift; sourceTree = "<group>"; };
+		1F10905421E3FD0F007799BD /* PokemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewController.swift; sourceTree = "<group>"; };
+		1F10905A21EAB9FC007799BD /* PokemonsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonsTableViewController.swift; sourceTree = "<group>"; };
 		1F95CFDD21DD67EC008F9CDE /* InscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
 		1F95CFE921DE2DE7008F9CDE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1F95CFEC21DE781D008F9CDE /* SHA1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
@@ -164,9 +170,12 @@
 			isa = PBXGroup;
 			children = (
 				0DDE2C0821B6CD6400C70B7E /* AppDelegate.swift */,
+				1F10905421E3FD0F007799BD /* PokemonViewController.swift */,
+				1F10905A21EAB9FC007799BD /* PokemonsTableViewController.swift */,
 				1F10904A21E26757007799BD /* PokestopViewController.swift */,
 				1F95CFE921DE2DE7008F9CDE /* HomeViewController.swift */,
 				0DDE2C1A21C2B8CF00C70B7E /* MapViewController.swift */,
+				1F95CFDD21DD67EC008F9CDE /* InscriptionViewController.swift */,
 				0DDE2C0C21B6CD6400C70B7E /* Main.storyboard */,
 				0DDE2C0F21B6CD7B00C70B7E /* Assets.xcassets */,
 				0DDE2C1121B6CD7B00C70B7E /* LaunchScreen.storyboard */,
@@ -180,9 +189,9 @@
 				0DDE2C8421C94F1C00C70B7E /* Pokestop.swift */,
 				0DDE2C8621C94F4A00C70B7E /* Dresseur.swift */,
 				0DDE2C8821C94F6100C70B7E /* Localisation.swift */,
-				1F95CFDD21DD67EC008F9CDE /* InscriptionViewController.swift */,
 				1F95CFEC21DE781D008F9CDE /* SHA1.swift */,
 				1F10905221E3E9A5007799BD /* MyPointAnnotation.swift */,
+				1F0C189121ECA1FD00C8F6AD /* UIButtonCustom.swift */,
 			);
 			path = if26_projet_ios;
 			sourceTree = "<group>";
@@ -340,12 +349,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DDE2C7D21C94DD000C70B7E /* PokemonDAO.swift in Sources */,
+				1F10905B21EAB9FC007799BD /* PokemonsTableViewController.swift in Sources */,
 				1F10904B21E26757007799BD /* PokestopViewController.swift in Sources */,
 				0DDE2C8921C94F6100C70B7E /* Localisation.swift in Sources */,
 				0DDE2C8321C94EFA00C70B7E /* Pokemon.swift in Sources */,
 				0DDE2C1B21C2B8CF00C70B7E /* MapViewController.swift in Sources */,
+				1F10905521E3FD0F007799BD /* PokemonViewController.swift in Sources */,
 				1F95CFED21DE781D008F9CDE /* SHA1.swift in Sources */,
 				0DDE2C7B21C94CC200C70B7E /* DresseurDAO.swift in Sources */,
+				1F0C189221ECA1FD00C8F6AD /* UIButtonCustom.swift in Sources */,
 				0DDE2C7F21C94DFE00C70B7E /* PokestopDAO.swift in Sources */,
 				0DDE2C8521C94F1C00C70B7E /* Pokestop.swift in Sources */,
 				0DDE2C7921C942AC00C70B7E /* DataBaseHelper.swift in Sources */,

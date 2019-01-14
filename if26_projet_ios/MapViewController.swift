@@ -16,7 +16,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     var logoutSuccess:Bool = false
     let annotation = MKPointAnnotation()
+    var nomPokestopPourSegue:String = String()
     
+    @IBOutlet weak var imageInfo: UIImageView!
     @IBOutlet weak var mMap: MKMapView!
     var locationManager = CLLocationManager()
     let pokemonDAO = PokemonDAO.init()
@@ -25,6 +27,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var pseudoMapLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.imageInfo.isHidden = true
         let defaults = UserDefaults.standard
         let savedPseudo:String = defaults.object(forKey: "Session en cours") as? String ?? ""
        pseudoMapLabel.text = savedPseudo
@@ -75,6 +78,39 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.createAlertQuitter()
     }
     
+    @IBAction func infos(_ sender: UIButton) {
+        if self.imageInfo.isHidden == true {
+            self.imageInfo.isHidden = false
+        }
+        else{
+            self.imageInfo.isHidden = true
+        }
+    }
+    @IBAction func centrer(_ sender: UIButton) {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        // Check for Location Services
+        if (CLLocationManager.locationServicesEnabled()) {
+            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
+        }
+        
+        //Zoom to user location
+        if let userLocation = locationManager.location?.coordinate {
+            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 400, longitudinalMeters: 400)
+            mMap.setRegion(viewRegion, animated: false)
+            mMap.showsUserLocation = true
+            mMap.delegate = self
+        }
+        
+        self.locationManager = locationManager
+        
+        DispatchQueue.main.async {
+            self.locationManager.startUpdatingLocation()
+        }
+    }
     @objc func addPokestop(longGesture: UIGestureRecognizer) {
         if longGesture.state == .began {
             let touchPoint = longGesture.location(in: mMap)
@@ -127,6 +163,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
             }
         }
+        if segue.identifier == "pokemonSegue" {
+            if let destinationVC = segue.destination as? PokemonViewController {
+                destinationVC.nomPokestop = self.nomPokestopPourSegue
+                
+            }
+        }
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? MyPointAnnotation else { return nil }
@@ -138,6 +180,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             annotationView?.annotation = annotation
         }
         annotationView?.markerTintColor = annotation.markerTintColor
+        
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        self.nomPokestopPourSegue = ((view.annotation?.title)!)!
+        performSegue(withIdentifier: "pokemonSegue", sender: nil)
     }
 }

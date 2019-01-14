@@ -12,4 +12,5 @@ import CoreLocation
 
 class MyPointAnnotation: MKPointAnnotation {
     var markerTintColor: UIColor?
+    var nom:String = String()
 }

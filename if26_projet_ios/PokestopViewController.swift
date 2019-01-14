@@ -12,10 +12,13 @@ class PokestopViewController: UIViewController {
     var latitude:Double = Double()
     var longitude:Double = Double()
     var token = true
+    var pokestop:Pokestop?
     
     @IBOutlet weak var nomPokestopLabel: UILabel!
+    
     @IBOutlet weak var supprimerPokestopButton: UIButton!
     @IBOutlet weak var modifierPokestopButton: UIButton!
+    
     @IBOutlet weak var validerPokestopButton: UIButton!
     @IBOutlet weak var nomPokestopTextField: UITextField!
     @IBOutlet weak var latitudePokestopLabel: UILabel!
@@ -23,15 +26,22 @@ class PokestopViewController: UIViewController {
     @IBOutlet weak var switchPokestop: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.latitudePokestopLabel.text = String(self.latitude)
-        self.longitudePokestopLabel.text = String(self.longitude)
+       
         
         if self.token  == true {
+            self.latitudePokestopLabel.text = String(self.latitude)
+            self.longitudePokestopLabel.text = String(self.longitude)
             self.supprimerPokestopButton.isHidden = true
             self.modifierPokestopButton.isHidden = true
         }
         else{
+            self.latitudePokestopLabel.text = String(self.pokestop!.getLatitude())
+            self.longitudePokestopLabel.text = String(self.pokestop!.getLatitude())
+            self.nomPokestopTextField.text = self.pokestop!.getNom()
             self.validerPokestopButton.isHidden = true
+            if self.pokestop?.getIs_gym() == true {
+                self.switchPokestop.setOn(true, animated: false)
+            }
         }
     }
     
@@ -50,9 +60,20 @@ class PokestopViewController: UIViewController {
             self.performSegue(withIdentifier: "pokestopSegue", sender: nil)
         }
     }
-    @IBAction func modifier(_ sender: UIButton) {
-    }
+    
     @IBAction func supprimer(_ sender: UIButton) {
+        let pokestopDAO:PokestopDAO = PokestopDAO()
+        pokestopDAO.deletePokestop(id: (self.pokestop?.getId())!)
+        self.performSegue(withIdentifier: "pokestopSegue", sender: nil)
+    }
+    
+    @IBAction func modifier(_ sender: UIButton) {
+        let pokestopDAO:PokestopDAO = PokestopDAO()
+        self.pokestop?.setNom(nom: self.nomPokestopTextField.text!)
+        self.pokestop?.setIs_gym(is_gym: self.switchPokestop.isOn)
+        pokestopDAO.update(pokestop: self.pokestop!)
+        self.performSegue(withIdentifier: "pokestopSegue", sender: nil)
+        
     }
     
     func messageError(msg:String, position:Int, taille:Int) -> NSMutableAttributedString{

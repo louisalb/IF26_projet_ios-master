@@ -67,6 +67,22 @@ class PokestopDAO: DataBaseHelper {
         return nil
     }
     
+    func getPokestopByNom(nom: String) -> Pokestop? {
+        var pokestop: Pokestop
+        let query = super.POKESTOP_TABLE.filter(DataBaseHelper.NOM_POKESTOP == nom)
+        do{
+            for row in try super.dataBase.prepare(query){
+                let dresseurDAO = DresseurDAO.init()
+                let dresseur = dresseurDAO.getDresseurById(id: row[DataBaseHelper.ID_DRESSEUR_POKESTOP])
+                pokestop = Pokestop.init(id: row[DataBaseHelper.ID_POKESTOP], is_gym: row[DataBaseHelper.IS_GYM_POKESTOP], latitude: row[DataBaseHelper.LATITUDE_POKESTOP], longitude: row[DataBaseHelper.LONGITUDE_POKESTOP], dresseur: dresseur!, nom: row[DataBaseHelper.NOM_POKESTOP])
+                return pokestop
+            }
+        }catch {
+            print("get pokestop failed : \(error)")
+        }
+        return nil
+    }
+    
     func deletePokestop(id: Int) {
         let deletedPokestop = super.POKESTOP_TABLE.filter(DataBaseHelper.ID_POKESTOP == id)
         do{
